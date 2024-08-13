@@ -1,0 +1,85 @@
+public class NumberToWords {
+//This program prints out a given number in words, demonstrating the Switch statement
+
+    public static int reverse (int number) {  //reverses negative numbers
+        int reverse = 0;
+        while (number != 0) {
+            reverse = (reverse * 10) + (number % 10); //* by 10 + add last digit
+            number /= 10; //removes last digit
+        } 
+        return reverse;
+    } 
+
+//returns the count of the digits in that number
+    public static int getDigitCount (int number) {  
+        if (number < 0) {
+            return -1;
+        } 
+        if (number == 0) {
+            return 1;
+        } 
+        int count = 0;
+        for (int i = 1; i <= number; i *= 10) { // x10 for each loop
+            count++; //counts how many times count was multiplied
+        }
+        return count;
+    }
+    
+    
+    public static void numberToWords (int number) {  //print out the passed num using words for digits
+        if (number < 0) {
+            System.out.println("Invalid Value");
+            return;
+        } 
+
+//calls reverse method to get reversed number
+        int reverse = reverse(number); 
+        int zeroes = getDigitCount(number) - getDigitCount(reverse); 
+        
+        if (number == 0) {
+            System.out.println("Zero");
+            return;
+        }  
+        
+        while (reverse != 0) { //this loop will print the words
+            int lastDigit = reverse % 10; //this is how the loop decrements until no more digits
+        switch (lastDigit) {
+            case 0:
+                System.out.println("Zero");
+                break;
+            case 1:
+                System.out.println("One");
+                break;
+            case 2:
+                System.out.println("Two");
+                break;
+            case 3:
+                System.out.println("Three");
+                break;
+            case 4:
+                System.out.println("Four");
+                break;
+            case 5:
+                System.out.println("Five");
+                break;
+            case 6:
+                System.out.println("Six");
+                break;
+            case 7:
+                System.out.println("Seven");
+                break;
+            case 8:
+                System.out.println("Eight");
+                break;
+            case 9:
+                System.out.println("Nine");
+                break;
+        }
+           reverse /= 10; //loop decrements 
+        }
+    for (int i = 0; i < zeroes; i++){
+        System.out.println("Zero");
+    } 
+    }
+    
+}
